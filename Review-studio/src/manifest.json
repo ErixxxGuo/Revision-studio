@@ -1,0 +1,203 @@
+{
+  "version": 1,
+  "css": [
+    {
+      "file": "content.css",
+      "sections": [
+        "01-content"
+      ]
+    },
+    {
+      "file": "base.css",
+      "sections": [
+        "02-base"
+      ]
+    },
+    {
+      "file": "review.css",
+      "sections": [
+        "03-sidebar",
+        "04-card",
+        "05-notes",
+        "06-genbar"
+      ]
+    },
+    {
+      "file": "overlays.css",
+      "sections": [
+        "07-modal"
+      ]
+    },
+    {
+      "file": "responsive.css",
+      "sections": [
+        "08-responsive"
+      ]
+    },
+    {
+      "file": "workspace.css",
+      "sections": [
+        "09-wizard",
+        "10-home",
+        "11-share"
+      ]
+    },
+    {
+      "file": "papers.css",
+      "sections": [
+        "12-papers"
+      ]
+    }
+  ],
+  "markup": [
+    {
+      "file": "app.html",
+      "sections": [
+        "01-logo",
+        "02-sidebar",
+        "03-header",
+        "04-card",
+        "05-footer",
+        "06-home"
+      ]
+    },
+    {
+      "file": "dialogs.html",
+      "sections": [
+        "07-overlay",
+        "08-share",
+        "09-import"
+      ]
+    },
+    {
+      "file": "wizard.html",
+      "sections": [
+        "10-newsheet",
+        "11-newpanes"
+      ]
+    }
+  ],
+  "js": [
+    {
+      "file": "util.js",
+      "sections": [
+        "01-util"
+      ]
+    },
+    {
+      "file": "markdown.js",
+      "sections": [
+        "02-markdown"
+      ]
+    },
+    {
+      "file": "state.js",
+      "sections": [
+        "03-state"
+      ]
+    },
+    {
+      "file": "content.js",
+      "sections": [
+        "04-content"
+      ]
+    },
+    {
+      "file": "visuals.js",
+      "sections": [
+        "05-icons",
+        "06-visuals"
+      ]
+    },
+    {
+      "file": "schema.js",
+      "sections": [
+        "07-schema"
+      ]
+    },
+    {
+      "file": "paging.js",
+      "sections": [
+        "08-paging"
+      ]
+    },
+    {
+      "file": "api.js",
+      "sections": [
+        "09-cost",
+        "10-api"
+      ]
+    },
+    {
+      "file": "prompts.js",
+      "sections": [
+        "11-prompts"
+      ]
+    },
+    {
+      "file": "outline.js",
+      "sections": [
+        "12-outline",
+        "13-source"
+      ]
+    },
+    {
+      "file": "identify.js",
+      "sections": [
+        "14-identify"
+      ]
+    },
+    {
+      "file": "generate.js",
+      "sections": [
+        "15-generate"
+      ]
+    },
+    {
+      "file": "overlays.js",
+      "sections": [
+        "16-modal",
+        "17-menu"
+      ]
+    },
+    {
+      "file": "transfer.js",
+      "sections": [
+        "18-share",
+        "19-import"
+      ]
+    },
+    {
+      "file": "library.js",
+      "sections": [
+        "20-sidebar",
+        "21-home"
+      ]
+    },
+    {
+      "file": "card.js",
+      "sections": [
+        "22-card"
+      ]
+    },
+    {
+      "file": "wizard.js",
+      "sections": [
+        "23-wizard",
+        "24-pdf"
+      ]
+    },
+    {
+      "file": "papers.js",
+      "sections": [
+        "25-papers"
+      ]
+    },
+    {
+      "file": "main.js",
+      "sections": [
+        "99-main"
+      ]
+    }
+  ]
+}

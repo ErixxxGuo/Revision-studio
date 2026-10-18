@@ -1,0 +1,48 @@
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="lg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#D94801"/><rect x="11" y="5.5" width="16" height="12.5" rx="3" fill="#fff" fill-opacity=".42"/><rect x="6" y="10" width="18.5" height="15" rx="3.4" fill="#fff"/><path d="M10.8 17.8l3.6 3.6 6.4-7.6" fill="none" stroke="#D94801" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></symbol></svg>
+<div id="shell">
+<aside id="sidebar" aria-label="科目与章节">
+ <div class="sb-brand">
+  <button class="brand-b" id="hmBtn" type="button" title="首页" aria-label="首页"><svg class="logo" aria-hidden="true"><use href="#lg"/></svg><span class="wordmark">Revision <em>Studio</em></span></button>
+  <span class="sb-act"><button class="icon-btn" id="hp" type="button" title="使用指南" aria-label="使用指南"><svg class="i" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.2"/><path d="M6.3 6.2a1.8 1.8 0 1 1 2.6 1.6c-.6.3-.9.7-.9 1.3v.3"/><circle cx="8" cy="11.6" r=".25" fill="currentColor"/></svg></button></span>
+ </div>
+ <div class="sb-imports" aria-label="导入资料">
+  <button class="paper-nav" id="syllabusNav" type="button"><svg class="i" viewBox="0 0 16 16"><path d="M3 2h10v12H3zM6 5h4M6 8h4M6 11h2"/></svg><span>导入考纲</span><svg class="i import-plus" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg></button>
+  <button class="paper-nav" id="paperNav" type="button"><svg class="i" viewBox="0 0 16 16"><path d="M3 2h7l3 3v9H3zM10 2v3h3M6 8h4M6 11h4"/></svg><span>导入题目</span><svg class="i import-plus" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg></button>
+ </div>
+ <div class="sb-label"><span>科目</span><button class="icon-btn sm" id="add" type="button" title="新建科目" aria-label="新建科目"><svg class="i" viewBox="0 0 16 16"><path d="M8 3v10M3 8h10"/></svg></button></div>
+ <nav id="list" aria-label="科目列表"></nav>
+ <div class="sb-foot">
+  <div class="sv" id="sv"></div>
+  <button class="icon-btn" id="mnB" type="button" title="更多" aria-label="更多" aria-haspopup="menu" aria-expanded="false" aria-controls="menu"><svg class="i" viewBox="0 0 16 16"><circle cx="3.6" cy="8" r="1.15" fill="currentColor" stroke="none"/><circle cx="8" cy="8" r="1.15" fill="currentColor" stroke="none"/><circle cx="12.4" cy="8" r="1.15" fill="currentColor" stroke="none"/></svg></button>
+ </div>
+ <div class="menu" id="menu" role="menu" aria-label="更多" hidden>
+  <button class="mi" id="imp" type="button" role="menuitem"><svg class="i" viewBox="0 0 16 16"><path d="M8 2.4v7.2M5.2 6.9L8 9.7l2.8-2.8M3 11.4v1.2c0 .4.3.7.7.7h8.6c.4 0 .7-.3.7-.7v-1.2"/></svg><span>导入…</span></button>
+  <button class="mi" id="bak" type="button" role="menuitem"><svg class="i" viewBox="0 0 16 16"><path d="M2.5 3.4h11v2.9h-11zM3.5 6.3v6.2c0 .4.3.7.7.7h7.6c.4 0 .7-.3.7-.7V6.3M6.5 9h3"/></svg><span>备份全部</span></button>
+  <div class="mi-sep" role="separator"></div>
+  <button class="mi danger" id="rst" type="button" role="menuitem"><svg class="i" viewBox="0 0 16 16"><path d="M3.2 8.2a4.8 4.8 0 1 0 1.4-3.6M3 2.6v2.7h2.7"/></svg><span id="rstL">重置进度…</span></button>
+ </div>
+ <input type="file" id="fImp" accept=".json,application/json" hidden>
+ <div class="sb-resize" id="sbR" role="separator" aria-orientation="vertical" aria-label="调整侧栏宽度" tabindex="0" aria-valuemin="256" aria-valuemax="440" aria-valuenow="288" title="拖动调整宽度，双击恢复"></div>
+</aside>
+<div id="content">
+<header><button class="icon-btn" id="sbToggle" type="button" title="科目与章节" aria-label="打开侧栏"><svg class="i" viewBox="0 0 16 16"><path d="M2.5 4.5h11M2.5 8h11M2.5 11.5h11"/></svg></button>
+<div><span class="brand-code mono" id="code"></span></div>
+<div style="min-width:0"><span class="brand-t" id="title"></span><span class="brand-s" id="crumb"></span></div><div id="counter"></div><div id="track" title="复习进度"><i id="trackFill"></i></div></header>
+<div id="genbar" role="status" aria-live="polite"><div class="gb-row"><span class="gb-dot"></span><div class="gb-t" id="gHead" title="转到此科目"><b id="gTitle">正在生成卡片</b><span id="gSub"></span></div><div class="gb-pct" id="gPct"></div></div><div class="gb-bar"><i id="gFill"></i></div><div class="gb-row gb-f"><span id="gTxt"></span><button class="chip" id="gStop" type="button" title="未完成的条目会保留，可稍后继续">停止</button></div></div>
+<main><section class="panel"><div class="motif" id="motif" aria-hidden="true"></div><div class="ref" id="ref"></div><div class="objw" id="objw"><h1 id="obj"></h1></div><div class="objm ot1" id="meas" aria-hidden="true"></div><div class="pfoot" id="pfoot"><button class="rv" id="rv" title="标记为已复习（R）"><span class="ck"><svg class="i" viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7"/></svg></span><span id="rvl"></span></button><div class="pager" id="pager" hidden><button class="pg-b" id="pgPrev" type="button" aria-label="Previous part" title="上一页"><svg class="i" viewBox="0 0 16 16"><path d="M10 3.5L5.5 8l4.5 4.5"/></svg></button><span class="pg-d" id="pgD"></span><span class="pg-n" id="pgN"></span><button class="pg-b" id="pgNext" type="button" aria-label="Next part" title="下一页"><svg class="i" viewBox="0 0 16 16"><path d="M6 3.5L10.5 8 6 12.5"/></svg></button></div></div></section>
+<aside class="aid" aria-label="笔记"><div class="block"><h2>Notes and guidance</h2><div class="ai-tag" id="aitag"></div><div class="notes-detail" id="nd"></div><div id="guide"></div><div id="vis"></div><ul class="notes" id="notes"></ul><div id="pend"></div></div></aside></main>
+<footer><div class="navr"><button class="nb" id="prev" title="上一条（←）" aria-label="上一条"><svg class="i" viewBox="0 0 16 16"><path d="M10 3.5L5.5 8l4.5 4.5"/></svg></button><div id="dots"></div><button class="nb pri" id="next" title="下一条（→）" aria-label="下一条"><svg class="i" viewBox="0 0 16 16"><path d="M6 3.5L10.5 8 6 12.5"/></svg></button></div><div class="hint"><kbd>→</kbd> next &nbsp;<kbd>←</kbd> previous &nbsp;<kbd>R</kbd> reviewed</div></footer>
+<section id="home" aria-label="首页"><div class="hm-top"><button class="icon-btn" id="hmToggle" type="button" title="科目与章节" aria-label="打开侧栏"><svg class="i" viewBox="0 0 16 16"><path d="M2.5 4.5h11M2.5 8h11M2.5 11.5h11"/></svg></button></div><div class="hm" id="hmBody"></div></section>
+<section id="paperView" aria-label="题目解析">
+ <div class="paper-wrap">
+  <div class="paper-top"><button class="icon-btn" id="paperDrawer" type="button" title="科目与章节" aria-label="打开侧栏"><svg class="i" viewBox="0 0 16 16"><path d="M2.5 4.5h11M2.5 8h11M2.5 11.5h11"/></svg></button><button class="lnk" id="paperHome" type="button">首页</button><span></span><button class="btn" id="paperHistory" type="button">历史题目</button><button class="btn p" id="paperNew" type="button">导入题目</button></div>
+  <div id="paperResults" hidden></div>
+ </div>
+</section>
+</div></div>
+<input id="paperOriginalFile" type="file" accept=".pdf,image/png,image/jpeg,image/webp" hidden>
+<dialog id="paperOriginalDialog" aria-labelledby="paperOriginalTitle">
+ <div class="paper-original-heading"><h2 id="paperOriginalTitle">原题</h2><button class="icon-btn" id="paperOriginalClose" type="button" aria-label="关闭原题"><svg class="i" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div>
+ <div id="paperOriginalBody"></div>
+</dialog>

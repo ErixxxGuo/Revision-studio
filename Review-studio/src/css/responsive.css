@@ -1,0 +1,69 @@
+/**
+ * 08 · responsive.css — 窄屏（手机）适配：放在最后，覆盖前面各组件的桌面样式
+ */
+
+@media (max-width:860px) {
+  #sidebar {
+    position: fixed;
+    z-index: 5;
+    height: 100%;
+    background: var(--card);
+    transform: translateX(-100%);
+    transition: transform .25s ease;
+    width: min(300px,86vw);
+  }
+  #sidebar.open {
+    transform: none;
+    box-shadow: 0 0 40px rgba(0,0,0,.18);
+  }
+  #sbToggle { display: inline-flex; }
+  #scrim.on {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.3);
+    z-index: 4;
+  }
+  main {
+    grid-template-columns: 1fr;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .aid { overflow: visible; }
+  /* 手机:下一条做成大号主按钮,放在右下角拇指够得到的位置;上一条也放大到易点;底部避开 iPhone 的横条 */
+  #content {
+    padding: 0 16px 12px;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom,0px));
+  }
+  .panel {
+    padding: 30px 24px 28px 28px;
+    min-height: 52vh;
+    --pl: 28px;
+    --pr: 24px;
+  }
+  .block { padding: 22px 18px 18px; }
+  .motif {
+    width: 220px;
+    height: 220px;
+  }
+}
+@media (max-width:520px) {
+  #bNew #cancel:not(.stop) { display: none; }
+}
+@media (min-width:861px) {
+  #sidebar { position: relative; }
+}
+@media (max-width:860px) {
+  footer {
+    flex-wrap: nowrap;
+    padding-top: 10px;
+  }
+  #dots {
+    flex: 1;
+    max-width: none;
+    justify-content: center;
+  }
+}
+

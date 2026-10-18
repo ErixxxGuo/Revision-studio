@@ -1,0 +1,46 @@
+0 verbose cli D:\node.exe D:\node_modules\npm\bin\npm-cli.js
+1 info using npm@11.19.0
+2 info using node@v24.21.0
+3 silly config load:file:D:\node_modules\npm\npmrc
+4 silly config load:file:C:\Users\EricGuo\Desktop\Review-studio_CS assignment\Review-studio\.tools\.npmrc
+5 silly config load:file:C:\Users\EricGuo\.npmrc
+6 silly config load:file:C:\Users\EricGuo\Desktop\Review-studio_CS assignment\Review-studio\.tools\etc\npmrc
+7 verbose title npm install playwright
+8 verbose argv "--prefix" ".tools" "--cache" ".tools/npm-cache" "install" "--no-package-lock" "--ignore-scripts" "playwright"
+9 verbose logfile logs-max:10 dir:C:\Users\EricGuo\Desktop\Review-studio_CS assignment\Review-studio\.tools\npm-cache\_logs\2026-10-10T11_33_15_923Z-
+10 verbose logfile C:\Users\EricGuo\Desktop\Review-studio_CS assignment\Review-studio\.tools\npm-cache\_logs\2026-10-10T11_33_15_923Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly install-scripts no package.json at prefix Could not read package.json: Error: ENOENT: no such file or directory, open 'C:\Users\EricGuo\Desktop\Review-studio_CS assignment\Review-studio\.tools\package.json'
+13 silly packumentCache heap:2348810240 maxSize:587202560 maxEntrySize:293601280
+14 silly idealTree buildDeps
+15 silly fetch manifest playwright@*
+16 silly packumentCache full:https://registry.npmjs.org/playwright cache-miss
+17 http fetch GET 200 https://registry.npmjs.org/npm 2511ms
+18 http fetch GET 200 https://registry.npmjs.org/playwright 13751ms (cache miss)
+19 silly packumentCache full:https://registry.npmjs.org/playwright set size:undefined disposed:false
+20 silly placeDep ROOT playwright@1.64.0 OK for:  want: *
+21 silly fetch manifest playwright-core@1.64.0
+22 silly packumentCache full:https://registry.npmjs.org/playwright-core cache-miss
+23 http fetch GET 200 https://registry.npmjs.org/playwright-core 8365ms (cache miss)
+24 silly packumentCache full:https://registry.npmjs.org/playwright-core set size:undefined disposed:false
+25 silly placeDep ROOT playwright-core@1.64.0 OK for: playwright@1.64.0 want: 1.64.0
+26 silly reify moves {}
+27 http cache playwright-core@https://registry.npmjs.org/playwright-core/-/playwright-core-1.64.0.tgz 0ms (cache hit)
+28 http cache playwright@https://registry.npmjs.org/playwright/-/playwright-1.64.0.tgz 0ms (cache hit)
+29 silly tarball no local data for playwright-core@https://registry.npmjs.org/playwright-core/-/playwright-core-1.64.0.tgz. Extracting by manifest.
+30 silly tarball no local data for playwright@https://registry.npmjs.org/playwright/-/playwright-1.64.0.tgz. Extracting by manifest.
+31 http fetch GET 200 https://registry.npmjs.org/playwright/-/playwright-1.64.0.tgz 2112ms (cache miss)
+32 http fetch GET 200 https://registry.npmjs.org/playwright-core/-/playwright-core-1.64.0.tgz 6349ms (cache miss)
+33 silly ADD node_modules/playwright-core
+34 silly ADD node_modules/playwright
+35 verbose cwd C:\Users\EricGuo\Desktop\Review-studio_CS assignment\Review-studio
+36 verbose os Windows_NT 10.0.26200
+37 verbose node v24.21.0
+38 verbose npm  v11.19.0
+39 notice
+39 notice New major version of npm available! 11.19.0 -> 12.2.0
+39 notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+39 notice To update run: npm install -g npm@12.2.0
+39 notice  { force: true, Symbol(proc-log.meta): true }
+40 verbose exit 0
+41 info ok

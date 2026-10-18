@@ -1,0 +1,92 @@
+<div class="box" id="bPaper" style="display:none" role="dialog" aria-modal="true" aria-labelledby="paperImportTitle">
+ <div id="paperImport">
+  <div class="stp">
+   <div class="stp-h"><span class="stp-k">STEP <b id="paperStepN">1</b><em>/ 3</em></span><h3 id="paperImportTitle">导入题目</h3></div>
+   <button class="icon-btn stp-x" id="paperClose" type="button" title="关闭（已填内容会保留）" aria-label="关闭"><svg class="i" viewBox="0 0 16 16"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></button>
+   <ol class="stp-l" id="paperSteps"><li><button type="button" data-pstep="1"><i></i><span>上传</span></button></li><li><button type="button" data-pstep="2"><i></i><span>核对</span></button></li><li><button type="button" data-pstep="3"><i></i><span>解析</span></button></li></ol>
+  </div>
+  <div class="panes" id="paperPanes">
+   <div class="paper-pane" data-ppane="1">
+    <p class="pane-lead">上传题目，可附评分标准。</p>
+    <div class="paper-mode"><label><input type="radio" name="paperMode" value="single" checked>单题<span>截图或文字</span></label><label><input type="radio" name="paperMode" value="full">整份试卷<span>选择需要解析的页码</span></label></div>
+    <div class="paper-fields"><div><label for="paperTitle">名称</label><input id="paperTitle" maxlength="100" placeholder="例如 0606 Paper 1 · 第 3 题"></div><div><label for="paperSubject">关联考纲</label><select id="paperSubject"></select><small>可留空。有关联时，历史解析会放在该考纲下。</small></div></div>
+    <div class="paper-upload-grid">
+     <div class="paper-upload"><h2>题目 <span>必填</span></h2><button class="drop paper-drop" id="paperQDrop" type="button"><svg class="i" viewBox="0 0 16 16"><path d="M8 11V3M5 6l3-3 3 3M3 11v3h10v-3"/></svg><b>拖入 PDF 或题目截图</b><span>点击选择，支持 PNG、JPEG、WebP</span></button><input id="paperQFile" type="file" accept=".pdf,image/png,image/jpeg,image/webp" multiple hidden><div id="paperQAssets" class="paper-assets"></div><label for="paperQText">或粘贴题目文字</label><textarea id="paperQText" rows="4" placeholder="可以补充图片中不清楚的公式、题干或条件。"></textarea></div>
+     <div class="paper-upload"><h2>MarkScheme <span>可选</span></h2><button class="drop paper-drop" id="paperMDrop" type="button"><svg class="i" viewBox="0 0 16 16"><path d="M3 2h10v12H3zM5.5 6l1 1 2-2M5.5 10h5"/></svg><b>拖入答案 PDF 或截图</b><span>没有评分标准也可以解析</span></button><input id="paperMFile" type="file" accept=".pdf,image/png,image/jpeg,image/webp" multiple hidden><div id="paperMAssets" class="paper-assets"></div><label for="paperMText">或粘贴答案文字</label><textarea id="paperMText" rows="4" placeholder="例如最终答案、M1 / A1 / B1 等得分点。"></textarea></div>
+    </div>
+    <label for="paperFocus">想了解哪一步？ <span class="paper-muted">可选</span></label><textarea id="paperFocus" rows="2" maxlength="1200" placeholder="例如：为什么要取正根？为什么这一步能拿 A1？"></textarea>
+   </div>
+   <div class="paper-pane" data-ppane="2" hidden>
+    <div class="paper-summary" id="paperEstimate"></div>
+    <p class="paper-muted">只选择题目和答案所在页，跳过封面与空白页。</p>
+    <div class="paper-fields"><div><label for="paperKind">接口</label><select id="paperKind"><option value="ds">DeepSeek 官方</option><option value="proxy">本地代理</option><option value="local">本地模型</option><option value="custom">自定义兼容接口</option></select></div><div><label for="paperModel">模型</label><input id="paperModel" placeholder="deepseek-flash"><small>DeepSeek 图片识别使用 deepseek-flash。自定义接口需支持图片。</small></div></div>
+    <div class="paper-fields"><div><label for="paperBase">接口地址</label><input id="paperBase" autocomplete="off"></div><div><label for="paperKey">API Key</label><input id="paperKey" type="password" autocomplete="off" placeholder="代理可使用环境变量 Key"></div></div>
+    <label class="chk"><input id="paperThink" type="checkbox">思考模式<span>解析时启用，耗时和费用会增加。</span></label>
+    <div id="paperReview" class="paper-review" hidden><h2>核对识别结果</h2><p>检查公式、图形条件与答案配对。先修正标有 [unclear] 的内容；确认后才开始解析。</p><div id="paperConfirm"></div><details><summary>高级：编辑结构化数据</summary><label for="paperDetectedQ">题目 JSON</label><textarea id="paperDetectedQ" rows="9" spellcheck="false"></textarea><label for="paperDetectedM">评分标准 JSON</label><textarea id="paperDetectedM" rows="7" spellcheck="false"></textarea><button id="paperApplyJSON" class="btn" type="button">应用数据到核对表单</button></details></div>
+   </div>
+   <div class="paper-pane" data-ppane="3" hidden><div id="paperRunSummary"></div></div>
+   <div class="paper-status" id="paperStatus" role="status" aria-live="polite"></div>
+  </div>
+   <div class="paper-progress" id="paperProgress" hidden><progress id="paperProgressBar" max="100" value="0"></progress><button class="btn" id="paperStop" type="button">停止</button></div>
+   <div class="btns paper-bottom"><button class="btn" id="paperCancel" type="button">取消</button><span></span><button class="btn" id="paperBack" type="button">上一步</button><button class="btn" id="paperReread" type="button" hidden>重新识别</button><button class="btn p" id="paperNext" type="button">下一步</button></div>
+  </div>
+</div>
+<div class="box" id="bNew" role="dialog" aria-modal="true" aria-labelledby="nT" data-step="1">
+<div class="stp">
+ <div class="stp-h"><span class="stp-k">STEP <b id="stN">1</b><em>/ 4</em></span><h3 id="nT">命名科目</h3></div>
+ <button class="icon-btn stp-x" id="mClose" type="button" title="关闭（已填内容会保留）" aria-label="关闭"><svg class="i" viewBox="0 0 16 16"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></button>
+ <ol class="stp-l" id="stL">
+  <li class="cur"><button type="button" data-n="1"><i></i><span>命名</span></button></li>
+  <li><button type="button" data-n="2"><i></i><span>上传</span></button></li>
+  <li><button type="button" data-n="3"><i></i><span>识别</span></button></li>
+  <li><button type="button" data-n="4"><i></i><span>生成</span></button></li>
+ </ol>
+</div>
+<div class="panes" id="panes">
+ <section class="pane" data-s="1">
+  <p class="pane-lead">输入科目<b class="k">名称</b>。</p>
+  <div class="row"><div><label for="fTitle">科目名称</label><input id="fTitle" placeholder="例如 Biology 0610"></div><div style="flex:.45"><label for="fCode">简码</label><input id="fCode" maxlength="6" placeholder="0610"></div></div>
+  <p class="tip">可以留空，识别后自动填写。</p>
+  <div class="st" id="st1"></div>
+ </section>
+ <section class="pane" data-s="2">
+  <p class="pane-lead">上传<b class="k">考纲 PDF</b>。封面、目录等页面会自动忽略。</p>
+  <button class="drop" id="drop" type="button"><svg class="art" viewBox="0 0 56 40" aria-hidden="true"><rect x="15" y="4" width="26" height="32" rx="4" fill="none" stroke="currentColor" stroke-opacity=".35" stroke-width="1.3"/><rect x="11" y="8" width="26" height="28" rx="4" fill="var(--card)" stroke="currentColor" stroke-width="1.4"/><path d="M16 17h12M16 22h16M16 27h9" stroke="currentColor" stroke-opacity=".5" stroke-width="1.3" stroke-linecap="round"/><circle cx="42" cy="28" r="8" fill="var(--card)" stroke="currentColor" stroke-width="1.4"/><path d="M42 32v-8M38.8 27l3.2-3.2 3.2 3.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>上传考纲</b><span>拖到此处，或点击选取。也支持 TXT 和 Markdown。</span></div></button>
+  <div class="src" id="src" style="display:none">
+   <div class="srcchip"><svg class="i" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 1.8h5.2L12.5 5v9.2H4z"/><path d="M9.2 1.8V5h3.3"/></svg><span class="sn" id="srcName"></span><span class="sm" id="srcMeta"></span><button class="x" id="srcX" type="button" title="移除" aria-label="移除文件"><svg class="i" viewBox="0 0 16 16"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></button></div>
+   <div class="pgr"><span>页码范围</span><input id="pgA" type="number" min="1" inputmode="numeric" placeholder="自动" aria-label="起始页"><span>–</span><input id="pgB" type="number" min="1" inputmode="numeric" placeholder="自动" aria-label="结束页"><em>留空则自动判断。已知正文页码时填写，可以加快识别并节省费用。</em></div>
+  </div>
+  <button class="lnk" id="pasteL" type="button">改为粘贴文本</button>
+  <input type="file" id="fFile" accept=".txt,.md,.pdf" hidden>
+  <div class="st" id="st2"></div>
+ </section>
+ <section class="pane" data-s="3">
+  <p class="pane-lead" id="p3lead"></p>
+  <div class="est" id="estL"></div>
+  <details class="adv" id="adv"><summary><svg class="i" viewBox="0 0 16 16"><path d="M6 3.5L10.5 8 6 12.5"/></svg>接口与模型 <span id="advS" style="color:var(--ink-faint);font-weight:400"></span></summary>
+   <div class="row"><div><label for="fKind">接口</label><select id="fKind"><option value="ds">DeepSeek 官方</option><option value="proxy">本地代理（serve.py）</option><option value="local">本地模型（Ollama 等）</option><option value="custom">自定义（OpenAI 兼容）</option></select></div><div><label for="fBase">接口地址</label><input id="fBase" autocomplete="off"></div></div>
+   <div class="row"><div><label for="fKey">API Key<span class="lbl-s">本地代理和本地模型可留空</span></label><input id="fKey" type="password" placeholder="sk-..." autocomplete="off"></div><div><label for="fModel">模型</label><input id="fModel" list="mdl" placeholder="模型名称"><datalist id="mdl"><option value="deepseek-flash"><option value="deepseek-v4-pro"></datalist></div></div>
+   <label class="chk"><input type="checkbox" id="fThink">思考模式<span class="lbl-s">更慢、更贵，通常不需要</span></label>
+   <label class="chk"><input type="checkbox" id="fAuto">识别后自动开始生成<span class="lbl-s">无异常时跳过确认</span></label>
+   <div class="adv-f"><button class="chip" id="test" type="button">测试连接</button></div>
+   <div class="note-s">Key 仅保存在此浏览器，只会发送到上方的接口地址。</div>
+   <div id="useL"></div>
+  </details>
+  <div class="st" id="status" aria-live="polite"></div>
+  <div id="taWrap">
+   <label for="fText">大纲<span class="lbl-s">可编辑</span></label>
+   <textarea id="fText" spellcheck="false" placeholder="# 1.1 Cell structure&#10;Describe the structure of a plant cell and an animal cell&#10;- Limited to: nucleus, cytoplasm, cell membrane, cell wall&#10;State the functions of the nucleus, cytoplasm, cell membrane and cell wall&#10;# 1.2 Movement in and out of cells&#10;Define diffusion as the net movement of particles…"></textarea>
+   <div class="info" id="pInfo"></div>
+   <details class="ckd" id="fmtD"><summary>格式说明</summary><div class="note-s"><code>#</code> 开头为章节；每行一个考点，行首数字为考纲原编号，会用作卡片编号；<code>-</code> 开头为注释。</div></details>
+  </div>
+ </section>
+ <section class="pane" data-s="4">
+  <div id="s4"></div>
+  <label class="chk"><input type="checkbox" id="fThink2">思考模式<span class="lbl-s">更慢、费用明显更高，通常不需要</span></label>
+  <p class="tip">分批生成，每批完成后自动保存。可以随时停止，稍后继续。</p>
+  <div class="st" id="st4"></div>
+ </section>
+</div>
+<div class="bw" id="barW"><div class="bar"><i id="mBarI"></i></div><span class="bp" id="mPct"></span></div>
+<div class="btns"><button class="btn" id="cancel" type="button">取消</button><span class="sp"></span><button class="btn" id="back" type="button">上一步</button><button class="btn" id="redo" type="button" style="display:none" title="放弃当前结果并重新识别。更改页码范围后使用。">重新识别</button><button class="btn p" id="go" type="button">下一步</button></div>
+</div></div>
