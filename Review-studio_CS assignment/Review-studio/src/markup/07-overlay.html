@@ -1,0 +1,28 @@
+<div id="scrim"></div><div id="toast" role="status"></div>
+<div id="modal"><div class="box tut" id="bHelp" style="display:none" role="dialog" aria-modal="true" aria-labelledby="hT">
+<div class="box-h"><svg class="logo" aria-hidden="true"><use href="#lg"/></svg><div><h3 id="hT">使用指南</h3><p class="box-sub">把考纲变成可逐条复习的卡片</p></div></div>
+<h4>复习</h4>
+<p>按 <kbd>→</kbd> 或 <kbd>Enter</kbd> 翻到下一页，<kbd>←</kbd> 返回，<kbd>R</kbd> 标记为已复习。点击底部圆点可跳到本章的任意一条，点击左侧章节可直接跳转。考点较长时会自动分页，页码显示在卡片右下角。</p>
+<h4>新建科目</h4>
+<ul>
+<li><b>命名</b>：可以留空，识别后自动填写。</li>
+<li><b>上传</b>：选择考纲 PDF。扫描件无法识别，请改为粘贴文本。已知正文页码时，填写页码范围可以加快识别、节省费用。</li>
+<li><b>识别</b>：自动定位正文并提取考点，再与原文核对条数。结果显示在文本框中，可以直接修改。</li>
+<li><b>生成</b>：确认章节、考点数量和预计费用后开始。生成过程中可以随时停止，稍后继续。</li>
+</ul>
+<p>缺失的考点无需手动补充，生成前会对照原文自动补全。原文中能找到的逐字保留；找不到、但编号有空缺的由 AI 推断，并在卡片上标注“AI 补全”，请以官方考纲为准。</p>
+<h4>管理与分享</h4>
+<p>将鼠标移到自己创建的科目上，可以重命名、分享或删除。分享时可以复制分享码、保存为文件，或在支持的设备上直接发送。对方在“更多”菜单中选择“导入…”，选取文件或粘贴分享码；也可以把文件直接拖进页面。文件和分享码都不含复习进度和 API Key。拖动侧栏边缘可以调整宽度。</p>
+<h4>公式与 Markdown</h4>
+<p>笔记支持粗体、斜体、行内代码和 LaTeX 公式。化学式与方程式写作 <code>$\ce{2H2 + O2 -&gt; 2H2O}$</code>，数学公式写作 <code>$x^2$</code>。公式需要联网加载渲染组件，离线时显示为原始文本。</p>
+<h4>接口</h4>
+<ul>
+<li><b>本地代理（推荐）</b>：在终端运行 <code>python serve.py</code>，打开 <code>http://localhost:8787/revision-studio.html</code>，接口选择“本地代理”。可以用环境变量 <code>DEEPSEEK_API_KEY</code> 保存 Key。</li>
+<li><b>DeepSeek 官方</b>：在 platform.deepseek.com 创建 Key，模型填写 <code>deepseek-flash</code>。直接双击打开本地文件时，浏览器可能拦截请求。</li>
+<li><b>本地模型</b>：安装 Ollama，模型填写 <code>ollama list</code> 中显示的名称。较小的模型输出可能不稳定。</li>
+</ul>
+<h4>费用</h4>
+<p>金额以人民币显示，取自 DeepSeek 官方定价。第 4 步给出预计范围，生成时实时显示已花费的金额。思考模式默认关闭，可以明显降低费用。使用本地代理时，相同的请求会读取本地缓存，不再计费。</p>
+<h4>备份与常见问题</h4>
+<p>数据仅保存在此浏览器和此网址下。建议定期在“更多”菜单中备份全部科目。常见错误：401 表示 Key 无效，402 表示余额不足，429 表示请求过于频繁，Failed to fetch 请改用本地代理。</p>
+<div class="btns"><button class="btn p" id="hOk">完成</button></div></div>

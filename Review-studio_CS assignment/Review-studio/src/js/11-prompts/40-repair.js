@@ -1,0 +1,4 @@
+/* 核对后补读:只要求指定章节里缺的那几个编号 */
+var REPAIR_SYS = 'You extract specific learning objectives from part of a syllabus PDF text. Output compact single-line JSON only (no spaces after : or , and no line breaks): {"items":[{"n":0,"t":"","g":[""]}]}. ' +
+  'The user message names one section and the printed objective numbers that are still missing from an earlier extraction. Return ONLY those numbers, one item each, copied verbatim as the section prints them: join wrapped lines, keep sub-points such as (a), (b) inside "t" joined with "; ", and drop the leading number from "t" (it goes in "n"). ' +
+  'The section may print Core and Supplement objectives in separate lists with one shared numbering: look in both lists, and also on the other pages given. If a requested number does not appear in the text, leave it out; never invent one.';

@@ -1,0 +1,295 @@
+/**
+ * 05 · notes.css — 右侧笔记、考纲注释、图示、Markdown 与公式
+ */
+
+.aid {
+  overflow-y: auto;
+  min-height: 0;
+  scrollbar-width: thin;
+}
+.block {
+  background: var(--card);
+  border-radius: var(--r);
+  padding: 26px 26px 22px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+}
+.ai-tag {
+  font-size: 12px;
+  color: var(--ink-faint);
+  margin-bottom: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
+  line-height: 1.5;
+}
+.ai-tag:empty { display: none; }
+.ai-tag .warn { color: #B25000; }
+@media (prefers-color-scheme:dark) {
+  .ai-tag .warn { color: #FFB340; }
+}
+.chip {
+  font-size: 12px;
+  padding: 4px 11px;
+  border-radius: 999px;
+  border: 0;
+  background: var(--fill);
+  color: var(--ink-soft);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.chip:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.chip:disabled {
+  opacity: .5;
+  cursor: wait;
+}
+.chip.p {
+  background: var(--accent);
+  color: #fff;
+}
+.chip.p:hover { filter: brightness(1.08); }
+#nd:empty { display: none; }
+#nd { margin-bottom: 14px; }
+/* grouped list (notes) */
+.notes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: var(--fill);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.notes:empty { display: none; }
+.notes li {
+  position: relative;
+  padding: 11px 14px 11px 32px;
+  line-height: 1.6;
+}
+.notes li+li::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 32px;
+  right: 0;
+  height: 1px;
+  background: var(--line-strong);
+  opacity: .6;
+}
+.notes li::before {
+  content: "";
+  position: absolute;
+  left: 15px;
+  top: 19px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+mark {
+  background: linear-gradient(transparent 50%,var(--accent-soft) 50%);
+  color: var(--ink);
+  font-weight: 600;
+  padding: 0 1px;
+  text-decoration: underline;
+  text-decoration-color: var(--accent-line);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+/* syllabus guidance (verbatim) */
+.guide {
+  margin: 0 0 14px;
+  padding: 12px 14px 12px 16px;
+  border-left: 2px solid var(--accent);
+  background: var(--accent-soft);
+  border-radius: 0 12px 12px 0;
+}
+.guide-t {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+.guide ul {
+  margin: 0;
+  padding-left: 16px;
+}
+.guide li {
+  font-size: 13.5px;
+  line-height: 1.58;
+  color: var(--ink);
+}
+/* AI visuals */
+.vis {
+  border-radius: 14px;
+  background: var(--fill);
+  padding: 13px 14px 12px;
+  margin: 0 0 14px;
+}
+.vis-t {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 9px;
+  letter-spacing: -.003em;
+}
+.vis td:first-child { font-weight: 500; }
+.flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+.flow span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--card);
+  border-radius: 10px;
+  padding: 7px 11px 7px 8px;
+  font-size: 13px;
+  line-height: 1.35;
+}
+.flow span em {
+  font-style: normal;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.flow b {
+  color: var(--ink-faint);
+  display: inline-flex;
+}
+.flow b svg.i {
+  width: 13px;
+  height: 13px;
+}
+.vis svg.dg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.dg text {
+  font-family: var(--sans);
+  fill: var(--ink);
+  font-size: 12px;
+}
+.dg .lbl { font-weight: 600; }
+.dg .sm {
+  font-size: 11px;
+  fill: var(--ink-soft);
+}
+.dg .acc { fill: var(--accent); }
+.dg .bx {
+  fill: var(--card);
+  stroke: var(--line-strong);
+  stroke-width: 1;
+}
+.dg .bxa {
+  fill: var(--accent-soft);
+  stroke: var(--accent);
+  stroke-width: 1.2;
+}
+.dg .ln {
+  fill: none;
+  stroke: var(--ink-faint);
+  stroke-width: 1.3;
+}
+.dg .lna {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.6;
+}
+.dg .va {
+  fill: var(--accent);
+  fill-opacity: .07;
+  stroke: var(--accent);
+  stroke-width: 1.3;
+}
+.dg .vb {
+  fill: var(--ink-faint);
+  fill-opacity: .08;
+  stroke: var(--ink-faint);
+  stroke-width: 1.3;
+}
+/* pending state */
+.pending {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 18px 18px 18px;
+  border: 1px dashed var(--line-strong);
+  border-radius: 14px;
+  color: var(--ink-soft);
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+.pending svg.art {
+  width: 64px;
+  height: 40px;
+  color: var(--accent);
+}
+.navr {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nb {
+  border-radius: 50%;
+  border: 0;
+  background: var(--card);
+  box-shadow: 0 0 0 1px var(--line);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--ink-soft);
+  padding: 0;
+}
+.nb:hover { color: var(--accent); }
+.nb:disabled {
+  opacity: .35;
+  cursor: default;
+}
+.d {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 0;
+  background: var(--line-strong);
+  padding: 0;
+  cursor: pointer;
+  transition: transform .15s;
+}
+.d.r { background: var(--accent); }
+.hint {
+  font-size: 12px;
+  color: var(--ink-faint);
+}
+.block h2 {
+  font-family: var(--serif);
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: -.015em;
+  color: var(--ink);
+  margin: 0 0 14px;
+  line-height: 1.2;
+}
+.notes strong,
+.vis strong {
+  font-weight: 650;
+}
+

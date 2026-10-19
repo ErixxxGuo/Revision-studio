@@ -1,0 +1,48 @@
+<div class="panes" id="panes">
+ <section class="pane" data-s="1">
+  <p class="pane-lead">输入科目<b class="k">名称</b>。</p>
+  <div class="row"><div><label for="fTitle">科目名称</label><input id="fTitle" placeholder="例如 Biology 0610"></div><div style="flex:.45"><label for="fCode">简码</label><input id="fCode" maxlength="6" placeholder="0610"></div></div>
+  <p class="tip">可以留空，识别后自动填写。</p>
+  <div class="st" id="st1"></div>
+ </section>
+ <section class="pane" data-s="2">
+  <p class="pane-lead">上传<b class="k">考纲 PDF</b>。封面、目录等页面会自动忽略。</p>
+  <button class="drop" id="drop" type="button"><svg class="art" viewBox="0 0 56 40" aria-hidden="true"><rect x="15" y="4" width="26" height="32" rx="4" fill="none" stroke="currentColor" stroke-opacity=".35" stroke-width="1.3"/><rect x="11" y="8" width="26" height="28" rx="4" fill="var(--card)" stroke="currentColor" stroke-width="1.4"/><path d="M16 17h12M16 22h16M16 27h9" stroke="currentColor" stroke-opacity=".5" stroke-width="1.3" stroke-linecap="round"/><circle cx="42" cy="28" r="8" fill="var(--card)" stroke="currentColor" stroke-width="1.4"/><path d="M42 32v-8M38.8 27l3.2-3.2 3.2 3.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>上传考纲</b><span>拖到此处，或点击选取。也支持 TXT 和 Markdown。</span></div></button>
+  <div class="src" id="src" style="display:none">
+   <div class="srcchip"><svg class="i" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 1.8h5.2L12.5 5v9.2H4z"/><path d="M9.2 1.8V5h3.3"/></svg><span class="sn" id="srcName"></span><span class="sm" id="srcMeta"></span><button class="x" id="srcX" type="button" title="移除" aria-label="移除文件"><svg class="i" viewBox="0 0 16 16"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></button></div>
+   <div class="pgr"><span>页码范围</span><input id="pgA" type="number" min="1" inputmode="numeric" placeholder="自动" aria-label="起始页"><span>–</span><input id="pgB" type="number" min="1" inputmode="numeric" placeholder="自动" aria-label="结束页"><em>留空则自动判断。已知正文页码时填写，可以加快识别并节省费用。</em></div>
+  </div>
+  <button class="lnk" id="pasteL" type="button">改为粘贴文本</button>
+  <input type="file" id="fFile" accept=".txt,.md,.pdf" hidden>
+  <div class="st" id="st2"></div>
+ </section>
+ <section class="pane" data-s="3">
+  <p class="pane-lead" id="p3lead"></p>
+  <div class="est" id="estL"></div>
+  <details class="adv" id="adv"><summary><svg class="i" viewBox="0 0 16 16"><path d="M6 3.5L10.5 8 6 12.5"/></svg>接口与模型 <span id="advS" style="color:var(--ink-faint);font-weight:400"></span></summary>
+   <div class="row"><div><label for="fKind">接口</label><select id="fKind"><option value="ds">DeepSeek 官方</option><option value="proxy">本地代理（serve.py）</option><option value="local">本地模型（Ollama 等）</option><option value="custom">自定义（OpenAI 兼容）</option></select></div><div><label for="fBase">接口地址</label><input id="fBase" autocomplete="off"></div></div>
+   <div class="row"><div><label for="fKey">API Key<span class="lbl-s">本地代理和本地模型可留空</span></label><input id="fKey" type="password" placeholder="sk-..." autocomplete="off"></div><div><label for="fModel">模型</label><input id="fModel" list="mdl" placeholder="模型名称"><datalist id="mdl"><option value="deepseek-flash"><option value="deepseek-v4-pro"></datalist></div></div>
+   <label class="chk"><input type="checkbox" id="fThink">思考模式<span class="lbl-s">更慢、更贵，通常不需要</span></label>
+   <label class="chk"><input type="checkbox" id="fAuto">识别后自动开始生成<span class="lbl-s">无异常时跳过确认</span></label>
+   <div class="adv-f"><button class="chip" id="test" type="button">测试连接</button></div>
+   <div class="note-s">Key 仅保存在此浏览器，只会发送到上方的接口地址。</div>
+   <div id="useL"></div>
+  </details>
+  <div class="st" id="status" aria-live="polite"></div>
+  <div id="taWrap">
+   <label for="fText">大纲<span class="lbl-s">可编辑</span></label>
+   <textarea id="fText" spellcheck="false" placeholder="# 1.1 Cell structure&#10;Describe the structure of a plant cell and an animal cell&#10;- Limited to: nucleus, cytoplasm, cell membrane, cell wall&#10;State the functions of the nucleus, cytoplasm, cell membrane and cell wall&#10;# 1.2 Movement in and out of cells&#10;Define diffusion as the net movement of particles…"></textarea>
+   <div class="info" id="pInfo"></div>
+   <details class="ckd" id="fmtD"><summary>格式说明</summary><div class="note-s"><code>#</code> 开头为章节；每行一个考点，行首数字为考纲原编号，会用作卡片编号；<code>-</code> 开头为注释。</div></details>
+  </div>
+ </section>
+ <section class="pane" data-s="4">
+  <div id="s4"></div>
+  <label class="chk"><input type="checkbox" id="fThink2">思考模式<span class="lbl-s">更慢、费用明显更高，通常不需要</span></label>
+  <p class="tip">分批生成，每批完成后自动保存。可以随时停止，稍后继续。</p>
+  <div class="st" id="st4"></div>
+ </section>
+</div>
+<div class="bw" id="barW"><div class="bar"><i id="mBarI"></i></div><span class="bp" id="mPct"></span></div>
+<div class="btns"><button class="btn" id="cancel" type="button">取消</button><span class="sp"></span><button class="btn" id="back" type="button">上一步</button><button class="btn" id="redo" type="button" style="display:none" title="放弃当前结果并重新识别。更改页码范围后使用。">重新识别</button><button class="btn p" id="go" type="button">下一步</button></div>
+</div></div>

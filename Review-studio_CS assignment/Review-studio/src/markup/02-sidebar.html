@@ -1,0 +1,21 @@
+<div id="shell">
+<aside id="sidebar" aria-label="科目与章节">
+ <div class="sb-brand">
+  <button class="brand-b" id="hmBtn" type="button" title="首页" aria-label="首页"><svg class="logo" aria-hidden="true"><use href="#lg"/></svg><span class="wordmark">Revision <em>Studio</em></span></button>
+  <span class="sb-act"><button class="icon-btn" id="hp" type="button" title="使用指南" aria-label="使用指南"><svg class="i" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.2"/><path d="M6.3 6.2a1.8 1.8 0 1 1 2.6 1.6c-.6.3-.9.7-.9 1.3v.3"/><circle cx="8" cy="11.6" r=".25" fill="currentColor"/></svg></button></span>
+ </div>
+ <div class="sb-label"><span>科目</span><button class="icon-btn sm" id="add" type="button" title="新建科目" aria-label="新建科目"><svg class="i" viewBox="0 0 16 16"><path d="M8 3v10M3 8h10"/></svg></button></div>
+ <nav id="list" aria-label="科目列表"></nav>
+ <div class="sb-foot">
+  <div class="sv" id="sv"></div>
+  <button class="icon-btn" id="mnB" type="button" title="更多" aria-label="更多" aria-haspopup="menu" aria-expanded="false" aria-controls="menu"><svg class="i" viewBox="0 0 16 16"><circle cx="3.6" cy="8" r="1.15" fill="currentColor" stroke="none"/><circle cx="8" cy="8" r="1.15" fill="currentColor" stroke="none"/><circle cx="12.4" cy="8" r="1.15" fill="currentColor" stroke="none"/></svg></button>
+ </div>
+ <div class="menu" id="menu" role="menu" aria-label="更多" hidden>
+  <button class="mi" id="imp" type="button" role="menuitem"><svg class="i" viewBox="0 0 16 16"><path d="M8 2.4v7.2M5.2 6.9L8 9.7l2.8-2.8M3 11.4v1.2c0 .4.3.7.7.7h8.6c.4 0 .7-.3.7-.7v-1.2"/></svg><span>导入…</span></button>
+  <button class="mi" id="bak" type="button" role="menuitem"><svg class="i" viewBox="0 0 16 16"><path d="M2.5 3.4h11v2.9h-11zM3.5 6.3v6.2c0 .4.3.7.7.7h7.6c.4 0 .7-.3.7-.7V6.3M6.5 9h3"/></svg><span>备份全部</span></button>
+  <div class="mi-sep" role="separator"></div>
+  <button class="mi danger" id="rst" type="button" role="menuitem"><svg class="i" viewBox="0 0 16 16"><path d="M3.2 8.2a4.8 4.8 0 1 0 1.4-3.6M3 2.6v2.7h2.7"/></svg><span id="rstL">重置进度…</span></button>
+ </div>
+ <input type="file" id="fImp" accept=".json,application/json" hidden>
+ <div class="sb-resize" id="sbR" role="separator" aria-orientation="vertical" aria-label="调整侧栏宽度" tabindex="0" aria-valuemin="256" aria-valuemax="440" aria-valuenow="288" title="拖动调整宽度，双击恢复"></div>
+</aside>

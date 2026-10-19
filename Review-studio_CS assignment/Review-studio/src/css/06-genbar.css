@@ -1,0 +1,37 @@
+/**
+ * 06 · genbar.css — 生成进度条
+ */
+
+/* 生成进度:页面顶部整条,粗进度条 + 大号百分比 */
+#genbar {
+  display: none;
+  position: relative;
+  overflow: hidden;
+  margin: 12px 0 0;
+  padding: 14px 20px 13px 22px;
+  border-radius: 16px;
+  background: var(--card);
+  border: 1px solid var(--accent-line);
+  box-shadow: var(--shadow);
+}
+body.gen #genbar { display: block; }
+#genbar::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: var(--accent);
+}
+@keyframes gbs {
+  to{background-position:22.63px 0}
+}
+@keyframes gbi {
+  0%{transform:translateX(-100%)}
+  100%{transform:translateX(295%)}
+}
+@keyframes gbp {
+  50%{opacity:.3;transform:scale(.75)}
+}
+

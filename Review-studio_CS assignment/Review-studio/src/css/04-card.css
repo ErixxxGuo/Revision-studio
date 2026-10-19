@@ -1,0 +1,215 @@
+/**
+ * 04 · card.css — 页头、复习卡片、翻页、底部导航
+ */
+
+#content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0 32px 14px;
+}
+header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 0 16px;
+}
+.brand-code {
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: .02em;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 4px 8px;
+  border-radius: 7px;
+}
+.brand-t { display: block; }
+.brand-s {
+  font-size: 13px;
+  color: var(--ink-soft);
+  display: block;
+  margin-top: 2px;
+}
+#counter {
+  margin-left: auto;
+  font-size: 12.5px;
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+#track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--line);
+  border-radius: 2px;
+  overflow: hidden;
+}
+#track i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width .4s ease;
+}
+main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1.12fr .88fr;
+  gap: 20px;
+  padding: 22px 0 18px;
+}
+.panel {
+  --pl: 52px;
+  --pr: 48px;
+  position: relative;
+  background: var(--card);
+  border-radius: var(--r);
+  padding: 36px var(--pr) 28px var(--pl);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+}
+.panel::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: var(--accent);
+}
+.motif {
+  position: absolute;
+  right: -36px;
+  bottom: -36px;
+  width: 340px;
+  height: 340px;
+  pointer-events: none;
+  color: var(--accent);
+}
+.motif .dots { fill: var(--ink-faint); }
+.panel>*:not(.motif) { position: relative; }
+.ref {
+  font-size: 13px;
+  color: var(--ink-faint);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.ref b {
+  font-family: var(--mono);
+  font-weight: 600;
+  color: var(--accent);
+  font-size: 12.5px;
+  background: var(--accent-soft);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+.sc { color: var(--sc); }
+.hl {
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--accent-soft);
+  padding: 0 6px;
+  border-radius: 7px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.rv {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: var(--card);
+  color: var(--ink-soft);
+  cursor: pointer;
+  font-size: 13.5px;
+  transition: background .15s,color .15s,border-color .15s;
+}
+.rv:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.rv .ck {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink-faint);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.rv .ck svg {
+  width: 11px;
+  height: 11px;
+  stroke-width: 2.6;
+  opacity: 0;
+}
+.rv.done .ck svg { opacity: 1; }
+/* footer */
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-top: 4px;
+}
+#dots {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  max-width: min(60vw,560px);
+}
+.d:hover { transform: scale(1.35); }
+.d.c { box-shadow: 0 0 0 2px var(--paper),0 0 0 3.5px var(--accent); }
+kbd {
+  font-family: var(--mono);
+  background: var(--card);
+  border: 1px solid var(--line-strong);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  padding: 0 5px;
+  font-size: 11px;
+  color: var(--ink-soft);
+}
+#meas {
+  position: absolute!important;
+  left: var(--pl);
+  right: var(--pr);
+  top: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+#obj>.o-sub:first-child,
+#meas>.o-sub:first-child {
+  padding-top: 0;
+}
+.pg-d i {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 4px;
+  background: var(--line-strong);
+  transition: width .2s,background .2s;
+}
+.nb.pri:hover:not(:disabled) {
+  color: #fff;
+  filter: brightness(1.08);
+  box-shadow: none;
+}
+.nb.pri svg.i { stroke-width: 2; }
+
