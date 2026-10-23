@@ -1,3 +1,6 @@
 /api.txt
 /log_ProjectTopic.xlsx
 /.ai-tmp/
+.cache/
+__pycache__/
+*.pyc
